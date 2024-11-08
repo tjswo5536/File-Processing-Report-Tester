@@ -57,7 +57,7 @@ diff_test() {
 		return 1
 	fi
 
-	"${PATH_TEST}"/user_exe < "$1" > "${PATH_TEST}"/output/${PROJECT}/user_output_test_$(basename "$1") 2>&1
+	"${PATH_TEST}"/user_exe < "$1" > "${PATH_TEST}"/output/${PROJECT}/user_output_$(basename "$1") 2>&1
 	SIG=$?
 	if [ $SIG -eq 134 ]; then
 		printf "Command './user_exe < $1' got killed by an Abort\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
@@ -72,9 +72,9 @@ diff_test() {
 		printf "%-4s${COLOR_FAIL}S${DEFAULT}\n"
 		retvalue=1
 	else
-		"${PATH_TEST}"/test/test_exe < "$1" > "${PATH_TEST}"/output/${PROJECT}/output_test_$(basename "$1") 2>&1
-		DIFF=$(diff -u "${PATH_TEST}"/output/${PROJECT}/user_output_test_$(basename "$1") "${PATH_TEST}"/output/${PROJECT}/output_test_$(basename "$1"))
-		printf "$> diff -u user_output_test_$(basename "$1") output_test_$(basename "$1")\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
+		"${PATH_TEST}"/test/test_exe < "$1" > "${PATH_TEST}"/output/${PROJECT}/test_output_$(basename "$1") 2>&1
+		DIFF=$(diff -u "${PATH_TEST}"/output/${PROJECT}/user_output_$(basename "$1") "${PATH_TEST}"/output/${PROJECT}/test_output_$(basename "$1"))
+		printf "$> diff -u user_output_$(basename "$1") test_output_$(basename "$1")\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
 		if [ "$DIFF" != "" ] || [ ! -e "${PATH_TEST}"/output/${PROJECT}/user_output_test_$(basename "$1") ]; then
 			echo "${DIFF}" | cat -e >> "${PATH_DEEPTHOUGHT}"/deepthought
 			printf "\nDiff KO :(\n" >> "${PATH_DEEPTHOUGHT}"/deepthought

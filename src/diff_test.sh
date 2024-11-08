@@ -75,7 +75,7 @@ diff_test() {
 		"${PATH_TEST}"/test/test_exe < "$1" > "${PATH_TEST}"/output/${PROJECT}/test_output_$(basename "$1") 2>&1
 		DIFF=$(diff -u "${PATH_TEST}"/output/${PROJECT}/user_output_$(basename "$1") "${PATH_TEST}"/output/${PROJECT}/test_output_$(basename "$1"))
 		printf "$> diff -u user_output_$(basename "$1") test_output_$(basename "$1")\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
-		if [ "$DIFF" != "" ] || [ ! -e "${PATH_TEST}"/output/${PROJECT}/user_output_test_$(basename "$1") ]; then
+		if [ -n "$DIFF" ] || [ ! -e "${PATH_TEST}"/output/${PROJECT}/user_output_$(basename "$1") ]; then
 			echo "${DIFF}" | cat -e >> "${PATH_DEEPTHOUGHT}"/deepthought
 			printf "\nDiff KO :(\n" >> "${PATH_DEEPTHOUGHT}"/deepthought
 			printf "%-1s${COLOR_FAIL}[KO]${DEFAULT}\n"
@@ -85,6 +85,7 @@ diff_test() {
 			printf "%-1s${COLOR_OK}[OK]${DEFAULT}\n"
 			retvalue=0
 		fi
+		exit
 	fi
 
 	return $retvalue

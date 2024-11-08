@@ -85,7 +85,6 @@ diff_test() {
 			printf "%-1s${COLOR_OK}[OK]${DEFAULT}\n"
 			retvalue=0
 		fi
-		exit
 	fi
 
 	return $retvalue

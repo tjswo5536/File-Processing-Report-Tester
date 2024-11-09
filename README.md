@@ -98,7 +98,7 @@ You can test your project on `Github Actions`. Create repository with the `templ
 https://github.com/KMU-File-Processing/File-Processing-Report-Tester/generate
 ```
 
-❗️❗️❗️Must create it as `Private` repository either❗️❗️❗️
+❗️❗️❗️Must create it as `PRIVATE` repository❗️❗️❗️
 
 </br>
 

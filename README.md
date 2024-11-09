@@ -92,13 +92,7 @@ https://github.com/KMU-File-Processing/File-Processing-Report-Tester.git
 
 ### Github Actions (Recommended)
 
-You can test your project on `Github Actions`. `fork` this repository and `enable` the Github Actions in the `Actions` tab in your repository.
-
-❗️❗️❗️Must fork it as `Private` repository❗️❗️❗️
-
-</br>
-
-Or you can create a new repository with the `template` below.
+You can test your project on `Github Actions`. Create repository with the `template` below to use.
 
 ```
 https://github.com/KMU-File-Processing/File-Processing-Report-Tester/generate

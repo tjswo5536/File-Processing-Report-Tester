@@ -25,6 +25,7 @@ clear
 
 init_deepthought
 
+# Local 환경에서 실행할 경우 아래 주석을 해제하고, 원하는 프로젝트를 선택하세요.
 #select_project
 
 check_file

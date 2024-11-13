@@ -268,8 +268,8 @@ namespace ft {
 	    __x->__set_parent(__y);
 	}
 
-	template <class _NodePtr>
-	void __tree_balance(_NodePtr __x, _NodePtr __end) _NOEXCEPT {
+	template <class _NodePtr, class _EndNodePtr>
+	void __tree_balance(_NodePtr __x, _EndNodePtr __end) _NOEXCEPT {
 		_LIBCPP_ASSERT(__x != nullptr, "Can't attach null node to a leaf");
 		
 		unsigned __left_height, __right_height;
@@ -314,7 +314,7 @@ namespace ft {
 		// if __z has two children, then __y will be prev or next by height.
     	// __y will have at most one child.
 
-		_NodePtr __x, __y;
+		_NodePtr __y, __x, __w;
 
 		unsigned __left_height = __height(__z->__left_);
 		unsigned __right_height = __height(__z->__right_);
@@ -325,6 +325,8 @@ namespace ft {
 			__y = (__z->__left_ == nullptr || __z->__right_ == nullptr) ? __z : __tree_max(__z->__left_);
 			__x = __y->__left_;
 		}
+
+		__w = __y->__parent_unsafe();
 
 		if (__x != nullptr) {
 			__x->__parent_ = __y->__parent_;
@@ -357,12 +359,10 @@ namespace ft {
 			if (__root == __z) {
 				__root = __y;
 			}
-		} else {
-			__y = __x;
 		}
 
-		if (__y != nullptr) {
-			__tree_balance(__y, static_cast<_NodePtr>(__root->__parent_unsafe()));
+		if (__root) {
+			__tree_balance(static_cast<_NodePtr>(__w), __root->__parent_unsafe());
 		}
 	}
 

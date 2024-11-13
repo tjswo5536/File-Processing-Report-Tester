@@ -158,7 +158,7 @@ You can manually run the workflow with `command` below or use the `Actions` tab 
 
 ```
 
-gh workflow run main.yml -f project="your_project_name"
+gh workflow run main.yml -f project="project_to_test"
 
 ```
 

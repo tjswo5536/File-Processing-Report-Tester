@@ -137,6 +137,9 @@
             Node* r;
             std::string flag;
 
+            if(q == nullptr)
+                q = p;
+            
             if(height(p->left) > height(p->right))
                 r = maxNode(p->left), flag = "LEFT";
             else if(height(p->left) < height(p->right))
@@ -155,7 +158,6 @@
                 eraseBST(p->right, r->key);
         }
 
-        q = searchParent(T, deleteKey);
         while(q != nullptr) {
             q->size = size(q->left) + size(q->right) + 1;
             q->height = 1;
